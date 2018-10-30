@@ -33,36 +33,22 @@
             </a>
         </div>
         <ul id="menu-%e9%a1%b6%e9%83%a8%e8%8f%9c%e5%8d%95" class="header-menu">
-            <li id="menu-item-6" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6">
-                <a href="/articles/4">干货</a>
-            </li>
-            <li id="menu-item-6" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6">
-                <a href="/learning3"><i class="czs-write-l"></i>自倚修行</a>
-            </li>
-            <li id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13">
-                <a target="_blank" href="/articles/category"><i class="czs-buy-l"></i>随缘客栈</a>
-            </li>
+            @foreach($categories as $category)
+                <li id="menu-item-{{ $category->id }}">
+                    <a href="#">{{ $category->name }}</a>
+                </li>
+            @endforeach
             <li id="menu-item-14"
                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-14">
                 <a href="#">安装</a>
                 <ul class="sub-menu child-menu depth_0 ">
-                    <li id="menu-item-105"
-                        class="menu-item menu-item-type-post_type menu-item-object-post menu-item-105"><a
-                                href="http://heijing.chuangzaoshi.com/archives/46"><i class="czs-read-l"></i>黑镜手册</a>
+                    <li id="menu-item-105" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-105">
+                        <a href="http://heijing.chuangzaoshi.com/archives/46"><i class="czs-read-l"></i>黑镜手册</a>
                     </li>
-                    <li id="menu-item-100"
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100"><a target="_blank"
-                                                                                                         href="http://chuangzaoshi.com/icon/"><i
-                                    class="czs-caomei"></i>草莓图标</a></li>
+                    <li id="menu-item-100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100">
+                        <a target="_blank" class="czs-caomei"></i>草莓图标</a>
+                    </li>
                 </ul>
-            </li>
-            <li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15">
-                <a target="_blank"
-                   href="https://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-16446430693.8.qLdiUC&#038;id=550291436260"><i
-                            class="czs-diamond-l"></i>主题订制</a>
-            </li>
-            <li id="menu-item-169" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-169">
-                <a target="_blank" href="http://heitang.chuangzaoshi.com/"><i class="czs-gift-l"></i>黑糖主题</a>
             </li>
         </ul>
         <div class="admin-login hidden-sm">
@@ -70,7 +56,9 @@
         </div>
         <div class="search-button cursor-pointer">
             <i class="czs-search-l"></i>
-            <span class="d-inline-block transition opacity-0"><i class="czs-close-l"></i></span>
+            <span class="d-inline-block transition opacity-0">
+                <i class="czs-close-l"></i>
+            </span>
         </div>
         <div class="menu-button">
             <div class="nav-bar">
@@ -80,41 +68,6 @@
             </div>
         </div>
     </nav>
-    <div class="menu-wrap show-xs">
-        <div class="mobile-menu">
-            <ul id="menu-%e9%a1%b6%e9%83%a8%e8%8f%9c%e5%8d%95-1" class="mobile-menu-nav">
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7">
-                    <a href="#">设计</a>
-                </li>
-                <li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6">
-                    <a href="#">教程</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13">
-                    <a target="_blank" href="#"><i class="czs-buy-l"></i>购买主题</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-14">
-                    <a href="#">安装</a>
-                    <ul class="sub-menu child-menu depth_0 ">
-                        <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-105">
-                            <a href="#"></i>黑镜手册</a>
-                        </li>
-                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-100">
-                            <a target="_blank" href="#"></i>草莓图标</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15">
-                    <a target="_blank" href="#"><i class="czs-diamond-l"></i>主题订制</a>
-                </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-169">
-                    <a target="_blank" href="#"><i class="czs-gift-l"></i>黑糖主题</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mobile-admin-login text-center mt-3">
-            <a href="#" target="_blank" class="btn-line btn-line-geek">登录</a>
-        </div>
-    </div>
 </header>
 {{--头部导航结束--}}
 

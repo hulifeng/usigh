@@ -130,18 +130,11 @@
                 <li>
                     <a class="active" href="#" data-type="all">全部</a>
                 </li>
-                <li>
-                    <a class="" href="#" data-type="uikit">UIkit</a>
-                </li>
-                <li>
-                    <a class="" href="#" data-type="poster">海报设计</a>
-                </li>
-                <li>
-                    <a class="" href="#" data-type="creativity">灵感创意</a>
-                </li>
-                <li>
-                    <a class="" href="#" data-type="interface">界面交互</a>
-                </li>
+                @foreach($categories as $category)
+                    <li>
+                        <a class="" href="#" data-type="category-{{ $category->id }}">{{ $category->name }}</a>
+                    </li>
+                @endforeach
             </ul>
             <div class="layout-type-wrap ps-a hidden-xs">
                 <a class="btn-layout-type p-4">
@@ -162,558 +155,50 @@
     <main class="container" id="main">
         <div class="row">
             <div class="post-wrap">
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
+                @foreach($articles as $article)
+                    <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
                     <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/1" style="background-image: url(/static/images/1_1.png)"></a>
+                        <a class="post-img img-response" href=" /articles/{{ $article->id }}" style="background-image: url({{ $article->cover }})"></a>
                         <div class="post-top">
                             <div class="post-title mb-1">
-                                <a href="/articles/61">Officeworks-Gifts-for-Imagineers </a>
+                                <a href="/articles/{{ $article->id }}">{{ $article->title }}s </a>
                             </div>
                             <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ux">UX设计 </a>
-                                <span class="post-time">2017.07.18</span>
+                                <a class="post-category" href="/articles/category/design/ux">{{ $article->category->name }} </a>
+                                <span class="post-time">{{ $article->created_at->toDateString() }}</span>
                             </div>
                         </div>
                         <div class="p-3">
                             <ul class="post-meta-bottom">
                                 <li class="post-meta-author">
                                     <a class="d-block" href="/articles/author/designer" target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
+                                        <img alt='' src='{{ $article->cover }}' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">{{ $article->user->name }}</span>
                                     </a>
                                 </li>
                                 <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 10141
+                                    <i class="czs-eye"></i> {{ $article->review_count ?: 1 }}
                                 </li>
                                 <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 8
+                                    <i class="czs-talk"></i> {{ $article->commend_count }}
                                 </li>
                                 <li class="post-meta-like pull-right">
                                     <i class="czs-heart"></i>
-                                    <span class="count">78</span>
+                                    <span class="count">{{ $article->visit_count ?: 1 }}</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/59" style="background-image: url(/static/images/2_1.png)">
-                        </a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/59"> Nokia-OZO-website </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 5572
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">108</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href="/articles/57" style="background-image: url(/static/images/3_1.png)">
-                        </a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/57"> Character-Design-early-2017 </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 3892
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">64</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href="/articles/55" style="background-image: url(/static/images/4_1.png)"></a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/55"> Sportify App Landing Page </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 3139
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">37</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/61" style="background-image: url(/static/images/1_1.png)"></a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/61">Officeworks-Gifts-for-Imagineers </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ux">UX设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer" target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 10141
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 8
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">78</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/59" style="background-image: url(/static/images/2_1.png)">
-                        </a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/59"> Nokia-OZO-website </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 5572
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">108</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href="/articles/57" style="background-image: url(/static/images/3_1.png)">
-                        </a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/57"> Character-Design-early-2017 </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 3892
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">64</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href="/articles/55" style="background-image: url(/static/images/4_1.png)"></a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/55"> Sportify App Landing Page </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 3139
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">37</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/61" style="background-image: url(/static/images/1_1.png)"></a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/61">Officeworks-Gifts-for-Imagineers </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ux">UX设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer" target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 10141
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 8
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">78</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/59" style="background-image: url(/static/images/2_1.png)">
-                        </a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/59"> Nokia-OZO-website </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 5572
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">108</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href="/articles/57" style="background-image: url(/static/images/3_1.png)">
-                        </a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/57"> Character-Design-early-2017 </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 3892
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">64</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href="/articles/55" style="background-image: url(/static/images/4_1.png)"></a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/55"> Sportify App Landing Page </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 3139
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">37</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/61" style="background-image: url(/static/images/1_1.png)"></a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/61">Officeworks-Gifts-for-Imagineers </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ux">UX设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer" target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 10141
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 8
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">78</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/59" style="background-image: url(/static/images/2_1.png)">
-                        </a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/59"> Nokia-OZO-website </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 5572
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">108</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href="/articles/57" style="background-image: url(/static/images/3_1.png)">
-                        </a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/57"> Character-Design-early-2017 </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 3892
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">64</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
-                    <div class="post post-style-card transition">
-                        <a class="post-img img-response" href="/articles/55" style="background-image: url(/static/images/4_1.png)"></a>
-                        <div class="post-top">
-                            <div class="post-title mb-1">
-                                <a href="/articles/55"> Sportify App Landing Page </a>
-                            </div>
-                            <div class="post-top-meta mb-3">
-                                <a class="post-category" href="/articles/category/design/ui">UI设计 </a>
-                                <span class="post-time">2017.07.18</span>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <ul class="post-meta-bottom">
-                                <li class="post-meta-author">
-                                    <a class="d-block" href="/articles/author/designer"
-                                       target="_blank">
-                                        <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/> <span class="d-inline-block">designer</span>
-                                    </a>
-                                </li>
-                                <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> 3139
-                                </li>
-                                <li class="post-meta-comments pull-right">
-                                    <i class="czs-comment"></i> 0
-                                </li>
-                                <li class="post-meta-like pull-right">
-                                    <i class="czs-heart"></i>
-                                    <span class="count">37</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!--分页-->
-            <div class="pagination px-3 pagination-number">
-                <a href='javacript:void(0);' class='current pagination-num'>1</a><a href='javacript:void(0);' class='pagination-num'>2</a><a href="javacript:void(0);" class="pagination-num"><i class="czs-angle-right-l"></i></a></div>
+            <div class="px-3">
+                {{ $articles->links() }}
+            </div>
+
+            {{--<div class="pagination px-3 pagination-number">--}}
+                {{--<a href='javacript:void(0);' class='current pagination-num'>1</a><a href='javacript:void(0);' class='pagination-num'>2</a><a href="javacript:void(0);" class="pagination-num"><i class="czs-angle-right-l"></i></a>--}}
+            {{--</div>--}}
         </div>
         <!--分页结束-->
         <div class="friend-link p-3 mt-6">

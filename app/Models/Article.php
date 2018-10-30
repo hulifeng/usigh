@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
 
 class Article extends Model
 {
@@ -26,5 +27,11 @@ class Article extends Model
     public function tags()
     {
         return $this->belongsToMany(Tags::class)->withPivot('article_id', 'tags_id');
+    }
+
+    // 分类
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

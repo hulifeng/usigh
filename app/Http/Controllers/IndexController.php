@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function index(Request $request)
     {
-        return view('articles.index');
+        $categories = Category::all();
+
+        $articles = Article::paginate(16);
+
+        return view('articles.index', compact('categories', 'articles'));
     }
 
     // 后台管理员登录

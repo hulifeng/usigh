@@ -124,24 +124,25 @@
                     </article>
                     <section id="post-link">
                         <div class="md-6 post-link-previous">
-                            上一篇: <a href="http://heijing.chuangzaoshi.com/archives/59" rel="prev">Nokia-OZO-website</a>
+                            上一篇: <a href="/articles/{{ $prev_article->id }}" rel="prev">{{ $prev_article->title }}</a>
                         </div>
                         <div class="md-6 post-link-next">
-                            下一篇: <a href="http://heijing.chuangzaoshi.com/archives/140" rel="next">教程丨打造像素艺术图的3D立体世界</a>
+                            下一篇: <a href="/articles/{{ $next_article->id }}" rel="next">{{ $next_article->title }}</a>
                         </div>
                     </section>
                     <div class="related-post row-sm-up clear">
-                        <div class="col-md-4">
-                            <div class="post post-style-card transition">
-                                <a class="post-img img-response" href="#" style="background-image: url(/static/images/1-13_1.png)"></a>
+                        @foreach($linkArticles as $linkArticle)
+                            <div class="col-md-4">
+                                <div class="post post-style-card transition">
+                                <a class="post-img img-response" href="#" style="background-image: url({{ $linkArticle->cover }})"></a>
                                 <div class="post-top">
                                     <div class="post-title mb-1">
-                                        <a href="#"> 教程丨打造像素艺术图的3D立体世界 </a>
+                                        <a href="#"> {{ $linkArticle->title }} </a>
                                     </div>
                                     <div class="post-top-meta mb-3">
-                                        <a class="post-category" href="#">教程 </a>
+                                        <a class="post-category" href="#">{{ $linkArticle->category->name }} </a>
                                         <span class="post-time">
-                                            2017.07.19
+                                            {{ $linkArticle->created_at->toDateString() }}
                                         </span>
                                     </div>
                                 </div>
@@ -149,98 +150,25 @@
                                     <ul class="post-meta-bottom">
                                         <li class="post-meta-author">
                                             <a class="d-block" href="#" target="_blank">
-                                                <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/>
-                                                <span class="d-inline-block">designer</span>
+                                                <img alt='' src='{{ $linkArticle->cover }}' class='avatar avatar-96 photo' height='96' width='96'/>
+                                                <span class="d-inline-block">{{ $linkArticle->user->name }}</span>
                                             </a>
                                         </li>
                                         <li class="post-meta-view pull-right">
-                                            <i class="czs-eye"></i> 8038
+                                            <i class="czs-eye"></i> {{ $linkArticle->comment_count ?: 1 }}
                                         </li>
                                         <li class="post-meta-comments pull-right">
-                                            <i class="czs-comment"></i> 3
+                                            <i class="czs-talk"></i> {{ $linkArticle->review_count }}
                                         </li>
                                         <li class="post-meta-like pull-right">
                                             <i class="czs-heart"></i>
-                                            <span class="count">80</span>
+                                            <span class="count">{{ $linkArticle->visit_count ?: 1 }}</span>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="post post-style-card transition">
-                                <a class="post-img img-response" href="#" style="background-image: url(/static/images/2_1.png)"></a>
-                                <div class="post-top">
-                                    <div class="post-title mb-1">
-                                        <a href="#"> Nokia-OZO-website </a>
-                                    </div>
-                                    <div class="post-top-meta mb-3">
-                                        <a class="post-category" href="#">UI设计 </a>
-                                        <span class="post-time">
-                                            2017.07.19
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="p-3">
-                                    <ul class="post-meta-bottom">
-                                        <li class="post-meta-author">
-                                            <a class="d-block" href="#" target="_blank">
-                                                <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/>
-                                                <span class="d-inline-block">designer</span>
-                                            </a>
-                                        </li>
-                                        <li class="post-meta-view pull-right">
-                                            <i class="czs-eye"></i> 5572
-                                        </li>
-                                        <li class="post-meta-comments pull-right">
-                                            <i class="czs-comment"></i> 0
-                                        </li>
-                                        <li class="post-meta-like pull-right">
-                                            <i class="czs-heart"></i>
-                                            <span class="count">108</span>
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="post post-style-card transition">
-                                <a class="post-img img-response" href="#" style="background-image: url(/static/images/3_1.png)"></a>
-                                <div class="post-top">
-                                    <div class="post-title mb-1">
-                                        <a href="#">
-                                            Character-Design-early-2017
-                                        </a>
-                                    </div>
-                                    <div class="post-top-meta mb-3">
-                                        <a class="post-category" href="#">UI设计 </a>
-                                        <span class="post-time">
-                                            2017.07.19
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="p-3">
-                                    <ul class="post-meta-bottom">
-                                        <li class="post-meta-author">
-                                            <a class="d-block" href="#" target="_blank">
-                                                <img alt='' src='/static/picture/avatar_user_1_1500356034-96x96_1.png' class='avatar avatar-96 photo' height='96' width='96'/>
-                                                <span class="d-inline-block">designer</span>
-                                            </a>
-                                        </li>
-                                        <li class="post-meta-view pull-right">
-                                            <i class="czs-eye"></i> 3892
-                                        </li>
-                                        <li class="post-meta-comments pull-right">
-                                            <i class="czs-comment"></i> 0
-                                        </li>
-                                        <li class="post-meta-like pull-right">
-                                            <i class="czs-heart"></i>
-                                            <span class="count">64</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="comments" name="comments">
                         <div id="respond" class="comment-respond">
