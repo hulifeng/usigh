@@ -94,6 +94,13 @@
                         </div>
                         <!-- support -->
                         <!-- share -->
+                        <div class="fl">
+                            <div class="tagcloud">
+                                <a href="#"><i class="czs-tag"></i>&nbsp;&nbsp;laravel</a>
+                                <a href="#"><i class="czs-tag"></i>&nbsp;&nbsp;laravel</a>
+                                <a href="#"><i class="czs-tag"></i>&nbsp;&nbsp;laravel</a>
+                            </div>
+                        </div>
                         <div class="article-share">
                             <span class="article-share-title">
                                 分享到：
