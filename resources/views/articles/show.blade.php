@@ -1,6 +1,11 @@
 @extends('layouts.main')
 @section('afterCss')
     <link rel="stylesheet" href="/assets/css/editor/editormd.preview.css">
+    <style>
+        .markdown-toc-list li {
+            padding-top: 15px;
+        }
+    </style>
 @endsection
 @section('content')
     <style>
@@ -44,7 +49,7 @@
                         {{--文章标题--}}
                         <div class="article-title">
                             <a href="#">
-                                {{ $article->title }}
+                               <i class="czs-read"></i> {{ $article->title }}
                             </a>
                             @if($article->is_original)
                                 <span class="fr" id="usigh-original">
@@ -58,18 +63,15 @@
                         </div>
 
                         <div class="article-meta">
-                        <span class="article-meta-time">
-                            <i class="czs-calendar"></i> {{ $article->created_at->toDateString() }}
-                        </span>
-                            <i class="czs-tag"></i>&nbsp;
-                            <a href="#" class="category tag">问答</a>
-                            <a href="#" rel="category tag">UX设计</a>
-                            <a href="#" rel="category tag">平面创意</a>
-                            <a href="#" rel="category tag">设计</a>&nbsp;
-                            <a onclick="return false;">
-                                <i class="czs-talk"></i> {{ $article->review_count }}&nbsp;
-                                <i class="czs-eye"></i> {{ $article->visit_count }}&nbsp;
-                            </a>
+                            <span style="padding: 4px 8px; border: 1px solid ; color: #78a5f1; margin-right: 20px;border-radius: 3px;">教程</span>
+                            <span style="margin-right: 20px;">作者：{{ $article->user->name }}</span>
+                            <span class="article-meta-time">
+                                 {{ $article->created_at }}
+                            </span>
+                            <span class="meta-right">
+                                <span class="entry-views"><span class="view-count">{{ $article->visit_count ?: 1 }}</span> 浏览</span>
+                                <span class="entry-comment"><a href="#comment" class="comments-link">{{ $article->review_count }} 评论</a></span>
+                            </span>
                         </div>
 
 
@@ -81,8 +83,51 @@
                         <!-- advertisement -->
                         <div class="article-advertisement">
                         </div>
+                        <!-- support -->
+                        <!-- share -->
+                        <div class="m-b-20">
+                            <div class="fl">
+                                <div class="tagcloud">
+                                    <span class="fl" style="padding: 5px 8px; color: #999;">文章标签：</span>
+                                    @foreach($article->tags as $tag)
+                                        <a href="#"><i class="czs-tag"></i>&nbsp;&nbsp;{{ $tag->name }}</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="article-share fr">
+                                <span class="article-share-title" style="color: #999;">
+                                    分享到：
+                                </span>
+                                    <span class="bdsharebuttonbox d-inline-block">
+                                    <a href="#" class="bds_weixin czs-weixin" data-cmd="weixin" title="分享到微信"></a>
+                                    <a href="#" class="bds_tsina czs-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+                                    <a href="#" class="bds_sqq czs-qq" data-cmd="sqq" title="分享到QQ"></a>
+                                    <a href="#" class="bds_more czs-add" data-cmd="more"></a>
+                                </span>
+                                <script>
+                                    window._bd_share_config = {
+                                        "common": {
+                                            "bdSnsKey": {},
+                                            "bdText": "",
+                                            "bdMini": "1",
+                                            "bdMiniList": false,
+                                            "bdPic": "",
+                                            "bdStyle": "0"
+                                        },
+                                        "share": {
+                                            bdCustomStyle: themeUrl + '/assets/css/share.css'
+                                        }
+                                    };
+                                    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = themeUrl + '/assets/js/bdshare/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+                                </script>
+                            </div>
+                        </div>
+
                         <!-- copyright -->
-                        <p class="article-copyright">转载原创文章请注明，转载自: <a href="#">友叹</a> - <a href="#ff1677">{{ $article->title }} </a> ({{ url()->full() }})</p>
+                        <div class="m-t-20">
+                            <br>
+                            <p class="article-copyright" >转载原创文章请注明，转载自: <a href="#">友叹</a> - <a href="#ff1677">{{ $article->title }} </a> ({{ url()->full() }})</p>
+                        </div>
                         <!-- like -->
                         <div class="article-like">
                             <a href="javascript:;" data-action="ding" data-id="61" class="favorite ">
@@ -92,49 +137,15 @@
                                 <span class="count d-block">{{ $article->commend_count }}</span>                                                                          </span>
                             </a>
                         </div>
-                        <!-- support -->
-                        <!-- share -->
-                        <div class="fl">
-                            <div class="tagcloud">
-                                <a href="#"><i class="czs-tag"></i>&nbsp;&nbsp;laravel</a>
-                                <a href="#"><i class="czs-tag"></i>&nbsp;&nbsp;laravel</a>
-                                <a href="#"><i class="czs-tag"></i>&nbsp;&nbsp;laravel</a>
-                            </div>
-                        </div>
-                        <div class="article-share">
-                            <span class="article-share-title">
-                                分享到：
-                            </span>
-                            <span class="bdsharebuttonbox d-inline-block">
-                                <a href="#" class="bds_weixin czs-weixin" data-cmd="weixin" title="分享到微信"></a>
-                                <a href="#" class="bds_tsina czs-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
-                                <a href="#" class="bds_sqq czs-qq" data-cmd="sqq" title="分享到QQ"></a>
-                                <a href="#" class="bds_more czs-add" data-cmd="more"></a>
-                            </span>
-                            <script>
-                                window._bd_share_config = {
-                                    "common": {
-                                        "bdSnsKey": {},
-                                        "bdText": "",
-                                        "bdMini": "1",
-                                        "bdMiniList": false,
-                                        "bdPic": "",
-                                        "bdStyle": "0"
-                                    },
-                                    "share": {
-                                        bdCustomStyle: themeUrl + '/assets/css/share.css'
-                                    }
-                                };
-                                with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = themeUrl + '/assets/js/bdshare/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-                            </script>
-                        </div>
                     </article>
                     <section id="post-link">
                         <div class="md-6 post-link-previous">
-                            上一篇: <a href="/articles/{{ $prev_article->id }}" rel="prev">{{ $prev_article->title }}</a>
-                        </div>
-                        <div class="md-6 post-link-next">
-                            下一篇: <a href="/articles/{{ $next_article->id }}" rel="next">{{ $next_article->title }}</a>
+                            @if(count($prev_article))
+                                <a href="/articles/{{ $prev_article->id }}" style="color: #999;" rel="prev"><i class="czs-angle-left-l"></i> {{ $prev_article->title }}</a>
+                            @endif
+                            @if(count($next_article))
+                                <a href="/articles/{{ $next_article->id }}" style="color: #999;" rel="next">{{ $next_article->title }} <i class="czs-angle-right-l"></i></a>
+                            @endif
                         </div>
                     </section>
                     <div class="related-post row-sm-up clear">
@@ -359,6 +370,74 @@
                                     <a class="tagcloud-more" href="#" title="更多标签">更多</a>
                                 </div>
                             </div>
+
+                            <div id="widget-resource" class="widget widget-active-user">
+                                <div class="widget-title"><span>活跃用户</span></div>
+                                <div class="active_user">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/1.png" alt="">Mason - Laravel
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/2.png" alt="">Able - Laravel
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/3.png" alt="">Kaka - Laravel
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/4.png" alt="">Peter - Laravel
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/5.png" alt="">Vicky - Laravel
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div id="widget-resource" class="widget widget-resource">
+                                <div class="widget-title"><span>推荐资源</span></div>
+                                <div class="recommend_resource">
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/1.png" alt="">Laravel 中文文档
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/2.png" alt="">Laravel 速查表
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/3.png" alt="">Laravel 软件外包服务
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/4.png" alt="">PHP之道 - PHPer必读
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/5.png" alt="">Composer 中文全量对象
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="markdown-body editormd-preview-container" id="custom-toc-container">#custom-toc-container</div>
                         </div>
                     </div>
                 </aside>
@@ -392,6 +471,10 @@
                 tex: true,               // 默认不解析
                 flowChart:true,         // 默认不解析
                 sequenceDiagram:true,  // 默认不解析
+
+                tocm: true,
+                tocContainer: "#custom-toc-container", // 自定义 ToC 容器层
+
             });
         });
     </script>

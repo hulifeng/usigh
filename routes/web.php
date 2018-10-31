@@ -67,7 +67,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($router) {
         $articles->get('/', 'ArticlesController@index')->name('admins.articles.index');
 
         // 编辑文章
-        $articles->get('/{article}', 'ArticlesController@edit')->where("article", "[0-9+]")->name('admins.articles.edit');
+        $articles->get('/{article}', 'ArticlesController@edit')->where("article", "[\d]+")->name('admins.articles.edit');
 
         // 修改文章
         $articles->put('/{article}/update', 'ArticlesController@update')->name('admins.articles.update');

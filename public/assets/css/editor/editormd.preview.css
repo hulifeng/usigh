@@ -2466,6 +2466,8 @@
 
 .markdown-body a {
   background: transparent;
+  display: inline-block;
+  width: 100%;
 }
 
 .markdown-body a:active,
@@ -2543,13 +2545,15 @@
 }
 
 .markdown-body a {
-  color: #4183c4;
+  /*color: #4183c4;*/
+  color: #777;
   text-decoration: none;
 }
 
 .markdown-body a:hover,
 .markdown-body a:active {
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+  background: #eff1f1;
 }
 
 .markdown-body hr {

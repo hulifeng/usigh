@@ -94,10 +94,10 @@ class ArticlesController extends Controller
     public function update(Article $article, Request $request, ImageUploaderHandler $uploader)
     {
         // 验证
-        $this->validate($request, [
-            'title' => 'required|min:6|max:20',
-            'test-editormd-markdown-doc' => 'required',
-        ]);
+//        $this->validate($request, [
+//            'title' => 'required|min:6',
+//            'test-editormd-markdown-doc' => 'required',
+//        ]);
 
         // 逻辑
         $input = $request->only(['title', 'category_id', 'is_original', 'user_id']);
@@ -111,6 +111,8 @@ class ArticlesController extends Controller
             $result = $uploader->upload($request->input('finalImg'), $request->input('user_id'));
             $input['cover'] = $result['path'];
         }
+
+//        dd($input);
 
         Article::where(['id' => $article->id] )->update($input);
 

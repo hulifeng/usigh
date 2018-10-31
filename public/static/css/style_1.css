@@ -5293,6 +5293,38 @@ main {
     display: none
 }
 
+/* 推荐资源 */
+.recommend_resource ul li{
+    margin: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.recommend_resource ul li a img {
+    margin-right: 8px;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+}
+/* 推荐资源结束  */
+
+/* 活跃用户 */
+.active_user ul li{
+    margin: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+.active_user ul li a img {
+    margin-right: 8px;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
+/* 活跃用户结束 */
+
 .widget-hotpost-image .widget-hotpost-image-item {
     margin-bottom: 16px;
     display: block;
@@ -5699,7 +5731,7 @@ main {
 
 .article-meta {
     margin-top: 10px;
-    margin-bottom: 20px;
+    padding: 15px 0 18px 0;
     position: relative;
     color: #aaa;
     border-bottom: 1px solid #D8D8D8;
@@ -5708,7 +5740,7 @@ main {
 .article-meta a {
     text-decoration: none;
     color: #aaa;
-    margin-right: 12px;
+    /*margin-right: 12px;*/
 }
 
 .article-meta .article-meta-tags {
@@ -5745,6 +5777,25 @@ main {
     position: relative;
     margin-right: 6px
 }
+
+/*详情页 浏览*/
+.meta-right {
+    float: right;
+}
+
+.entry-views {
+    margin-right: 3px;
+}
+
+.entry-comment a {
+    padding-left: 6px;
+    border-left: 1px solid #aaa;
+}
+
+.entry-comment a:hover {
+    color: #222;
+}
+/*详情页 浏览结束*/
 
 .article-body {
     margin-bottom: 28px;
@@ -5834,7 +5885,7 @@ main {
 }
 
 .article-copyright {
-    margin-top: 30px;
+    margin-top: 55px;
     margin-bottom: 48px;
     font-size: 13px;
     color: #ccc;
@@ -5945,7 +5996,7 @@ main {
 .article-share .article-share-title {
     margin-top: 2px;
     margin-right: 8px;
-    float: left
+    float: left;
 }
 
 .article-share .bdsharebuttonbox a {
@@ -6006,12 +6057,20 @@ main {
     text-align: right
 }
 
+/*#post-link .post-link-previous, #post-link .post-link-next {*/
+    /*padding: 12px 18px;*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    /*overflow: hidden;*/
+    /*text-align: center*/
+/*}*/
+
 #post-link .post-link-previous, #post-link .post-link-next {
     padding: 12px 18px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    text-align: center
+    /*text-align: center*/
 }
 
 @media screen and (max-width: 767px) {
@@ -6020,9 +6079,9 @@ main {
     }
 }
 
-#post-link .post-link-previous:hover, #post-link .post-link-next:hover {
-    background: #fafafa
-}
+/*#post-link .post-link-previous:hover, #post-link .post-link-next:hover {*/
+    /*background: #fafafa*/
+/*}*/
 
 .panel {
     margin-bottom: 20px;
