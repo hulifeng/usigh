@@ -5063,13 +5063,9 @@ main {
     background: #fff;
 }
 
-/*.pagination-new a {*/
-    /*text-decoration: none;*/
-    /*color: #333;*/
-    /*display: block;*/
-    /*background: #fff;*/
-    /*!*padding: 10px 22px*!*/
-/*}*/
+.pagination-new a {
+    color: #333;
+}
 
 .pagination-new .pagination-num-new.active {
     background: #000;
@@ -5725,7 +5721,8 @@ main {
 }
 
 .article-title a {
-    color: #727272;
+    /*color: #727272;*/
+    color: #636b6f;
     /*font-weight: 800*/
 }
 
@@ -6943,4 +6940,21 @@ main {
     color: white;
     font-size: 14px; padding: 5px;
     border-radius: 3px;
+}
+
+.mason {
+    padding-top: 40px;
+}
+.mason h3 {
+    padding-bottom: 10px;
+    color: white;
+}
+.mason a {
+    color: rgba(255, 255, 255, 0.5);
+}
+.mason a:hover {
+    color: white;
+}
+.mason ul li {
+    padding-bottom: 10px;
 }

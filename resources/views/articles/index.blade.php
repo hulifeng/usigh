@@ -124,7 +124,7 @@
     </div>
 
     <!--分类导航-->
-    <div class="category-wrap mb-6">
+    <div class="category-wrap mb-6" id="category-info">
         <div class="container ps-r">
             <ul class="category-nav pr-6">
                 <li>
@@ -203,11 +203,15 @@
         <!--分页结束-->
         <div class="friend-link p-3 mt-6">
             <strong class='pull-left mr-3'>友情链接<span class="hidden-xs">：</span></strong>
-            <li><a href="javacript:void(0);" ><span>Behance</span></a></li>
-            <li><a href="javacript:void(0);" ><span>Dribbble</span></a></li>
-            <li><a href="javacript:void(0);" ><span>创造狮导航</span></a></li>
-            <li><a href="javacript:void(0);" ><span>草莓图标库</span></a></li>
-            <li><a href="javacript:void(0);" ><span>黑糖主题</span></a></li>
+            @if($links)
+                @foreach($links as $link)
+                    <li>
+                        <a href="{{ $link->link }}" target="_blank">
+                            <span>{{ $link->title }}</span>
+                        </a>
+                    </li>
+                @endforeach
+            @endif
         </div>
     </main>
     <!--主体部分结束-->

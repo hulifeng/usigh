@@ -85,16 +85,17 @@
                         </div>
                         <!-- support -->
                         <!-- share -->
-                        <div class="m-b-20">
-                            <div class="fl">
-                                <div class="tagcloud">
+                        <div class="fl">
+                            <div class="tagcloud" style="margin-top: 40px;">
+                                @if($article->tags)
                                     <span class="fl" style="padding: 5px 8px; color: #999;">文章标签：</span>
                                     @foreach($article->tags as $tag)
                                         <a href="#"><i class="czs-tag"></i>&nbsp;&nbsp;{{ $tag->name }}</a>
                                     @endforeach
-                                </div>
+                                @endif
                             </div>
-                            <div class="article-share fr">
+                        </div>
+                        <div class="article-share fr" style="margin-top: 40px;">
                                 <span class="article-share-title" style="color: #999;">
                                     分享到：
                                 </span>
@@ -121,10 +122,12 @@
                                     with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = themeUrl + '/assets/js/bdshare/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
                                 </script>
                             </div>
-                        </div>
 
                         <!-- copyright -->
-                        <div class="m-t-20">
+                        <div class="m-t-40">
+                            <br>
+                            <br>
+                            <br>
                             <br>
                             <p class="article-copyright" >转载原创文章请注明，转载自: <a href="#">友叹</a> - <a href="#ff1677">{{ $article->title }} </a> ({{ url()->full() }})</p>
                         </div>
@@ -354,23 +357,6 @@
                                     </a>
                                 </div>
                             </div>
-                            <div id="widget-tagcloud-2" class="widget widget-tagcloud">
-                                <div class="widget-title"><span>标签云</span></div>
-                                <div class="tagcloud">
-                                    <a href="#" class="tag-cloud-link tag-link-14 tag-link-position-1" style="font-size: 15.411764705882pt;" aria-label="UIkit (15个项目)">
-                                        UIkit
-                                    </a>
-                                    <a href="#" class="tag-cloud-link tag-link-17 tag-link-position-2" style="font-size: 15.411764705882pt;" aria-label="海报设计 (15个项目)">
-                                        海报设计
-                                    </a>
-                                    <a href="#" class="tag-cloud-link tag-link-15 tag-link-position-3" style="font-size: 22pt;" aria-label="灵感创意 (18个项目)">
-                                        灵感创意
-                                    </a>
-                                    <a href="#" class="tag-cloud-link tag-link-16 tag-link-position-4" style="font-size: 8pt;" aria-label="界面交互 (12个项目)">界面交互</a>
-                                    <a class="tagcloud-more" href="#" title="更多标签">更多</a>
-                                </div>
-                            </div>
-
                             <div id="widget-resource" class="widget widget-active-user">
                                 <div class="widget-title"><span>活跃用户</span></div>
                                 <div class="active_user">
@@ -476,6 +462,20 @@
                 tocContainer: "#custom-toc-container", // 自定义 ToC 容器层
 
             });
+        });
+
+        // toc 目录跟着滑动
+        var target_box = $('#custom-toc-container').offset().top;
+
+        $(window).scroll(function() {
+            var s = $(window).scrollTop();
+            if (s > target_box) {
+                $('#custom-toc-container').addClass("fixed");
+                $('#custom-toc-container').css("width", "265px");
+            } else {
+                $('#custom-toc-container').removeClass("fixed");
+                $('#custom-toc-container').css("width", "");
+            }
         });
     </script>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Link;
 
 class IndexController extends Controller
 {
@@ -14,7 +15,9 @@ class IndexController extends Controller
 
         $articles = Article::paginate(16);
 
-        return view('articles.index', compact('categories', 'articles'));
+        $links = Link::all();
+
+        return view('articles.index', compact('categories', 'articles', 'links'));
     }
 
     // 后台管理员登录
@@ -27,5 +30,10 @@ class IndexController extends Controller
     public function register()
     {
         return view('admins.register');
+    }
+
+    public function test()
+    {
+        return view('tests.test');
     }
 }

@@ -94,10 +94,10 @@ class ArticlesController extends Controller
     public function update(Article $article, Request $request, ImageUploaderHandler $uploader)
     {
         // 验证
-//        $this->validate($request, [
-//            'title' => 'required|min:6',
-//            'test-editormd-markdown-doc' => 'required',
-//        ]);
+        $this->validate($request, [
+            'title' => 'required|min:2',
+            'test-editormd-markdown-doc' => 'required',
+        ]);
 
         // 逻辑
         $input = $request->only(['title', 'category_id', 'is_original', 'user_id']);
@@ -112,57 +112,57 @@ class ArticlesController extends Controller
             $input['cover'] = $result['path'];
         }
 
-//        dd($input);
-
         Article::where(['id' => $article->id] )->update($input);
 
         // input tags
-        $collection = explode(',', strtolower($request->input('tags')));
+        if ($request->input('tags')) {
+            $collection = explode(',', strtolower($request->input('tags')));
 
-        $allTags = [];
+            $allTags = [];
 
-        // 转化成小写
-        foreach (Tags::pluck('name')->all() as $val) {
-            $allTags[] = strtolower($val);
-        }
+            // 转化成小写
+            foreach (Tags::pluck('name')->all() as $val) {
+                $allTags[] = strtolower($val);
+            }
 
-        if (sizeof($allTags)) {
-            // 与传递过来的值做差集
-            $diff = collect($collection)->diff($allTags);
-            if (sizeof($diff)) {
-                // 生成需要的数据
-                foreach ($diff as $v) {
-                    $tags[] = ['name' => $v];
-                }
-                if (sizeof($tags)) {
-                    foreach ($tags as $val) {
-                        $result = Tags::create($val);
-                        $article->tags()->attach($result->id);
+            if (sizeof($allTags)) {
+                // 与传递过来的值做差集
+                $diff = collect($collection)->diff($allTags);
+                if (sizeof($diff)) {
+                    // 生成需要的数据
+                    foreach ($diff as $v) {
+                        $tags[] = ['name' => $v];
                     }
-                }
-            } else {
-                // 说明全是重复的值
-                foreach ($collection as $v) {
-                    $repeatTags[] = ['name' => $v];
-                }
-                if (sizeof($repeatTags)) {
-                    foreach ($repeatTags as $val) {
-                        $result = Tags::firstOrCreate($val);
-                        if (!$result->wasRecentlyCreated) {
-                            $article->tags()->attach($result->toArray()['id']);
+                    if (sizeof($tags)) {
+                        foreach ($tags as $val) {
+                            $result = Tags::create($val);
+                            $article->tags()->attach($result->id);
+                        }
+                    }
+                } else {
+                    // 说明全是重复的值
+                    foreach ($collection as $v) {
+                        $repeatTags[] = ['name' => $v];
+                    }
+                    if (sizeof($repeatTags)) {
+                        foreach ($repeatTags as $val) {
+                            $result = Tags::firstOrCreate($val);
+                            if (false !== $result->wasRecentlyCreated) {
+                                $article->tags()->attach($result->toArray()['id']);
+                            }
                         }
                     }
                 }
-            }
-        } else {
-            // 说明之前没有标签第一次创建
-            foreach ($collection as $v) {
-                $newTags[] = ['name' => $v];
-            }
-            if (sizeof($newTags)) {
-                foreach ($newTags as $val) {
-                    $result = Tags::create($val);
-                    $article->tags()->attach($result->id);
+            } else {
+                // 说明之前没有标签第一次创建
+                foreach ($collection as $v) {
+                    $newTags[] = ['name' => $v];
+                }
+                if (sizeof($newTags)) {
+                    foreach ($newTags as $val) {
+                        $result = Tags::create($val);
+                        $article->tags()->attach($result->id);
+                    }
                 }
             }
         }

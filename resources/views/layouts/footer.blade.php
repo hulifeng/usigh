@@ -1,50 +1,45 @@
 <!--底部-->
-<div style="height: 280px;background: #202020">
-    <div class="container" style="margin-top: 50px; margin-bottom: 40px;">
-        <div class="l_block" style="float:left;">
-            <div style="margin-right: 50px;width: 154px;float: left;">
-                <span style="font-size: 18px;">服务提供商</span>
-                <img src="/static/images/tengxunyun.png" alt="" style="width: 110px;height: 110px; margin-top: 20px;">
-            </div>
-            <div style="margin-right: 50px;width: 154px;float: left;">
-                <span style="font-size: 18px;">开发宝典</span>
-                <ul>
-                    <li class="l_block_first"><a href="javascript:void(0)">PHP手册</a></li>
-                    <li><a href="javascript:void(0)">Laravel手册</a></li>
-                    <li><a href="javascript:void(0)">MySQL手册</a></li>
-                </ul>
-            </div>
-            <div style="margin-right: 50px;width: 154px;float: left;">
-                <span style="font-size: 18px;">学习路线</span>
-                <ul>
-                    <li><a href="javascript:void(0)">Python学习指南</a></li>
-                    <li><a href="javascript:void(0)">Laravel学习指南</a></li>
-                    <li><a href="javascript:void(0)">Linux学习指南</a></li>
-                    <li><a href="javascript:void(0)">MySQL学习指南</a></li>
-                </ul>
-            </div>
-            <div style="margin-right: 50px;width: 154px;float: left;">
-                <span style="font-size: 18px;">面试王中王</span>
-                <ul>
-                    <li><a href="javascript:void(0)">PHP面试题库</a></li>
-                    <li><a href="javascript:void(0)">简历模板</a></li>
-                    <li><a href="javascript:void(0)">MySQL面试宝典</a></li>
-                    <li><a href="javascript:void(0)">Linux面试宝典</a></li>
-                    <li><a href="javascript:void(0)">面试加分项专练</a></li>
-                </ul>
-            </div>
+<div style="min-height: 280px;background: #202020">
+    <div class="container">
+        <div class="col-sm-2 mason">
+            <h3>服务提供商</h3>
+            <img src="/static/images/tengxunyun.png" alt="" style="width: 110px;height: 110px;">
         </div>
-        <div class="r_block" style="width: 300px;height: 160px;border-left:1px solid #303030;float: right;">
-            <div class="rr_block">
-                <div class="rrt_block" style="float: right;">
-                    <img src="/static/images/logo_1.png" alt="">
-                </div>
-                <div class="rrb_block" style="float: right;">
-                    <span style="float: right"><strong>Learning</strong> is an as<strong>set!</strong></span>
-                    <p style="width: 210px;float: right"><strong>为程序小白而生</strong>，<strong>友叹</strong>本着最土的答案让程序小白轻松的<strong>解决难题！</strong></p>
-                </div>
-                <div class="clear"></div>
+        <div class="col-sm-2 mason">
+            <h3>开发宝典</h3>
+            <ul>
+                <li class="l_block_first"><a href="javascript:void(0)">PHP手册</a></li>
+                <li><a href="javascript:void(0)">Laravel手册</a></li>
+                <li><a href="javascript:void(0)">MySQL手册</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-2 mason">
+            <h3>学习路线</h3>
+            <ul>
+                <li><a href="javascript:void(0)">Python学习指南</a></li>
+                <li><a href="javascript:void(0)">Laravel学习指南</a></li>
+                <li><a href="javascript:void(0)">Linux学习指南</a></li>
+                <li><a href="javascript:void(0)">MySQL学习指南</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-2 mason">
+            <h3>面试王中王</h3>
+            <ul>
+                <li><a href="javascript:void(0)">PHP面试题库</a></li>
+                <li><a href="javascript:void(0)">简历模板</a></li>
+                <li><a href="javascript:void(0)">MySQL面试宝典</a></li>
+                <li><a href="javascript:void(0)">Linux面试宝典</a></li>
+                <li><a href="javascript:void(0)">面试加分项专练</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-4 mason">
+            <div class="fl"></div>
+            <div class="fr">
+                <img src="/static/images/logo_1.png" alt="">
+                <p><strong>Learning</strong> is an as<strong>set!</strong></p>
+                <p style="width: 210px;"><strong>为程序小白而生</strong>，<strong>友叹</strong>本着最土的答案让程序小白轻松的<strong>解决难题！</strong></p>
             </div>
+            <div class="clear" style="border-left: 1px solid rgba(255, 255, 255, 0.1);"></div>
         </div>
     </div>
 </div>
