@@ -320,38 +320,39 @@
                                     </a>
                                 </div>
                             </div>
-                            <div id="widget-resource" class="widget widget-active-user">
-                                <div class="widget-title"><span>活跃用户</span></div>
-                                <div class="active_user">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/1.png" alt="">Mason - Laravel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/2.png" alt="">Able - Laravel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/3.png" alt="">Kaka - Laravel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/4.png" alt="">Peter - Laravel
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/5.png" alt="">Vicky - Laravel
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
+                            {{--<div id="widget-resource" class="widget widget-active-user">--}}
+                                {{--<div class="widget-title"><span>活跃用户</span></div>--}}
+                                {{--<div class="active_user">--}}
+                                    {{--<ul>--}}
+                                        {{--<li>--}}
+                                            {{--<a href="#">--}}
+                                                {{--<img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/1.png" alt="">Mason - Laravel--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li>--}}
+                                            {{--<a href="#">--}}
+                                                {{--<img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/2.png" alt="">Able - Laravel--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li>--}}
+                                            {{--<a href="#">--}}
+                                                {{--<img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/3.png" alt="">Kaka - Laravel--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li>--}}
+                                            {{--<a href="#">--}}
+                                                {{--<img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/4.png" alt="">Peter - Laravel--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                        {{--<li>--}}
+                                            {{--<a href="#">--}}
+                                                {{--<img src="http://heijing.chuangzaoshi.com/wp-content/uploads/2017/07/5.png" alt="">Vicky - Laravel--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                    {{--</ul>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div id="widget-resource" class="widget widget-resource">
                                 <div class="widget-title"><span>推荐资源</span></div>

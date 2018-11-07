@@ -128,7 +128,7 @@
         <div class="container ps-r">
             <ul class="category-nav pr-6">
                 <li>
-                    <a class="{{ active_class(if_route('index')) }}" href="{{ route('index') }}" data-type="all">全部</a>
+                    <a class="{{ active_class(if_route('index')) }}" href="{{ route('index', array('#category-info')) }}" data-type="all">全部</a>
                 </li>
                 @foreach($categories as $category)
                     <li>
