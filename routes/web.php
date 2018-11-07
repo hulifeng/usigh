@@ -8,6 +8,9 @@ Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.sho
 // 文章回复
 Route::post('/reply', 'CommentsController@store')->name('reply');
 
+// 分类展示
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+
 // 用户点赞
 Route::post('/articles/operate_commend', 'ArticlesController@like')->name('operate_commend');
 

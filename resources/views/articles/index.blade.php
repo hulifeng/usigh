@@ -128,11 +128,11 @@
         <div class="container ps-r">
             <ul class="category-nav pr-6">
                 <li>
-                    <a class="active" href="#" data-type="all">全部</a>
+                    <a class="{{ active_class(if_route('index')) }}" href="{{ route('index') }}" data-type="all">全部</a>
                 </li>
                 @foreach($categories as $category)
                     <li>
-                        <a class="" href="#" data-type="category-{{ $category->id }}">{{ $category->name }}</a>
+                        <a class="{{ active_class(if_route('categories.show') && if_route_param('category', $category->id)) }}" href="{{ route('categories.show', array('category' =>$category->id, '#category-info')) }}" data-type="category-{{ $category->id }}">{{ $category->name }}</a>
                     </li>
                 @endforeach
             </ul>
