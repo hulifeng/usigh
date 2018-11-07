@@ -176,14 +176,14 @@
                                     </a>
                                 </li>
                                 <li class="post-meta-view pull-right">
-                                    <i class="czs-eye"></i> {{ $article->review_count ?: 1 }}
+                                    <i class="czs-eye"></i> {{ $article->visit_count ?: 1 }}
                                 </li>
                                 <li class="post-meta-comments pull-right">
-                                    <i class="czs-talk"></i> {{ $article->commend_count }}
+                                    <i class="czs-talk"></i> {{ $article->review_count }}
                                 </li>
                                 <li class="post-meta-like pull-right">
                                     <i class="czs-heart"></i>
-                                    <span class="count">{{ $article->visit_count ?: 1 }}</span>
+                                    <span class="count">{{ $article->commend_count }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -196,9 +196,6 @@
                 {{ $articles->links() }}
             </div>
 
-            {{--<div class="pagination px-3 pagination-number">--}}
-                {{--<a href='javacript:void(0);' class='current pagination-num'>1</a><a href='javacript:void(0);' class='pagination-num'>2</a><a href="javacript:void(0);" class="pagination-num"><i class="czs-angle-right-l"></i></a>--}}
-            {{--</div>--}}
         </div>
         <!--分页结束-->
         <div class="friend-link p-3 mt-6">

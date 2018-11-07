@@ -10,7 +10,7 @@ class ArticleObserver
     {
         // xss 过滤
         $article->content = clean($article->content, 'user_article_body');
-        
+
         // 生成话题摘录
         $article->excerpt = make_excerpt($article->title);
 
