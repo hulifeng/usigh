@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
 {
-    public function show(Article $article)
+    public function show(Request $request, Article $article)
     {
+        if (!empty($article->slug) && $article->slug != $request->slug) {
+            return redirect($article->link(), 301);
+        }
+
         $categories = Category::all();
 
         $linkArticles = Article::where('category_id', $article->category_id)->orderBy('visit_count', 'desc')->limit(3)->get();

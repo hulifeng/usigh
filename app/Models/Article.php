@@ -47,4 +47,9 @@ class Article extends Model
     {
         return $this->hasMany(UserLike::class);
     }
+
+    public function link($params = [])
+    {
+        return route('articles.show', array_merge([$this->id, $this->slug], $params));
+    }
 }

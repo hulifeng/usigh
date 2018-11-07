@@ -3,7 +3,7 @@
 Route::get('/', 'IndexController@index')->name('index');
 
 // 文章详情页
-Route::get('/articles/{article}', 'ArticlesController@show')->where("article", "[\d]+")->name('articles.show');
+Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
 
 // 文章回复
 Route::post('/reply', 'CommentsController@store')->name('reply');
@@ -91,5 +91,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($router) {
 //Auth::routes();
 //
 //Route::get('/', 'HomeController@index');
+Route::get('/articles/{article}/{slug?}', 'ArticlesController@show')->name('articles.show');
 
 

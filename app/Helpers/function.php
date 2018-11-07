@@ -46,3 +46,10 @@ function article_of_num($article)
     $article = Article::where('id', $article)->first();
     return $article->commend_count;
 }
+
+// 去除换行符
+function make_excerpt($value, $length = 200)
+{
+    $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($value)));
+    return str_limit($excerpt, $length);
+}

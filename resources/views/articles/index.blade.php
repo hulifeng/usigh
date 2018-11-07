@@ -158,10 +158,10 @@
                 @foreach($articles as $article)
                     <div class="col-md-6 col-sm-6 col-lg-4 col-xl-3">
                     <div class="post post-style-card transition">
-                        <a class="post-img img-response" href=" /articles/{{ $article->id }}" style="background-image: url({{ $article->cover }})"></a>
+                        <a class="post-img img-response" href="{{ $article->link() }}" style="background-image: url({{ $article->cover }})"></a>
                         <div class="post-top">
                             <div class="post-title mb-1">
-                                <a href="/articles/{{ $article->id }}">{{ $article->title }}s </a>
+                                <a href="{{ $article->link() }}">{{ $article->title }}s </a>
                             </div>
                             <div class="post-top-meta mb-3">
                                 <a class="post-category" href="/articles/category/design/ux">{{ $article->category->name }} </a>
