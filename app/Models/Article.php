@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Comment;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 
@@ -33,5 +34,17 @@ class Article extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    // 回复
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    // 点赞数据
+    public function user_like()
+    {
+        return $this->hasMany(UserLike::class);
     }
 }

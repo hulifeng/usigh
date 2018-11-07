@@ -133,12 +133,21 @@
                         </div>
                         <!-- like -->
                         <div class="article-like">
-                            <a href="javascript:;" data-action="ding" data-id="61" class="favorite ">
-                                <span class="d-block">
-                                        <i class="czs-thumbs-up-l"></i>
-                                </span>
-                                <span class="count d-block">{{ $article->commend_count }}</span>                                                                          </span>
-                            </a>
+                            @if(is_like($article->id))
+                                <a data-action="ding" data-id="{{ $article->id }}" class="favorite">
+                                    <span class="d-block">
+                                          <i class="czs-thumbs-up"></i>
+                                    </span>
+                                    <span class="count d-block">{{ $article->commend_count }}</span>
+                                </a>
+                            @else
+                                <a data-action="ding" data-id="{{ $article->id }}" class="favorite">
+                                    <span class="d-block">
+                                          <i class="czs-thumbs-up-l"></i>
+                                    </span>
+                                    <span class="count d-block">{{ $article->commend_count }}</span>
+                                </a>
+                            @endif
                         </div>
                     </article>
                     <section id="post-link">
@@ -198,131 +207,85 @@
                                     <a rel="nofollow" id="cancel-comment-reply-link" href="/archives/61#respond" style="display:none;">取消回复</a>
                                 </small>
                             </h3>
-                            <form action="" method="post" id="commentform" class="no-gutters comment-form">
+                            <form action="{{ route('reply') }}" method="post" id="commentform" class="no-gutters comment-form">
+                                {{ csrf_field() }}
+                                <input type='hidden' name='article_id' value='{{ $article->id }}' id='article_id'/>
+                                <input type='hidden' name='parent_id' id='comment_parent' value='0'/>
                                 <p class="comment-form-comment"><label for="comment">评论</label>
-                                    <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea>
+                                    <textarea id="content" name="content" cols="45" rows="8"></textarea>
                                 </p>
                                 <div class="comment-form-author col-md-4 comment-input">
-                                    <input id="author" name="author" placeholder="昵称" type="text" value="" size="30"/>
+                                    <input id="author" name="author" placeholder="昵称（必填）" type="text" value="" size="30"/>
                                 </div>
                                 <div class="comment-form-email col-md-4 comment-input">
-                                    <input id="email" name="email" placeholder="邮箱" type="text" value="" size="30"/>
+                                    <input id="email" name="email" placeholder="邮箱（必填）" type="text" value="" size="30"/>
                                 </div>
                                 <div class="comment-form-url col-md-4 comment-input">
-                                    <input id="url" name="url" placeholder="网址" type="text" value="" size="30"/>
+                                    <input id="url" name="url" placeholder="网站（必填）" type="text" value="" size="30"/>
                                 </div>
                                 <p class="form-submit">
-                                    <input name="submit" style="background-color: #f44444;" type="submit" id="submit" class="submit" value="确定"/>
-                                    <input type='hidden' name='comment_post_ID' value='61' id='comment_post_ID'/>
-                                    <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
-                                </p>
-                                <p style="display: none;">
-                                    <input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="f6d9fb7b2e"/>
-                                </p>
-                                <p style="display: none;">
-                                    <input type="hidden" id="ak_js" name="ak_js" value="135"/>
+                                    <input type="submit" id="submit" class="submit" value="确定"/>
                                 </p>
                             </form>
                         </div>
                         <div class="comments-title">
-                            评论(8)
+                            评论({{ $article->review_count }})
                         </div>
-                        <ul class="comments-list">
-                            <li class="comment even thread-even depth-1" id="li-comment-57">
-                                <div id="comment-57">
-                                    <div class="comment-avatar">
-                                        <img src="/static/picture/d52541f2c2a3406b8b1d4b7bfc287ebc.gif" class="avatar avatar-96" height="96" width="96">
-                                    </div>
-                                    <div class="comment-body">
-                                        <span class="comment-user">2333</span>
-                                        <p>这个主题怎么下呀</p>
-                                        <div class="comment-meta">
-                                            <a href="#" class="comment-date">
-                                                03-20-2018
-                                            </a>
-                                            <span class="comment-action">
-                                                <a rel='nofollow' class='comment-reply-link' href='#' aria-label='回复给2333'>
-                                                    回复
-                                                </a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="children">
-                                    <li class="comment byuser comment-author-designer bypostauthor odd alt depth-2"
-                                        id="li-comment-115">
-                                        <div id="comment-115">
+                        @if($article->review_count)
+                            <ul class="comments-list">
+                                @foreach($comments as $comment)
+                                    <li class="comment even thread-even depth-1" id="li-comment-{{ $comment->id }}">
+                                        <div id="comment-{{ $comment->id }}">
                                             <div class="comment-avatar">
-                                                <img alt='' src='/static/picture/avatar_user_1_1500356034-48x48.png' class='avatar avatar-48 photo' height='48' width='48'/>
+                                                <img src="/static/picture/d52541f2c2a3406b8b1d4b7bfc287ebc.gif" class="avatar avatar-96" height="96" width="96">
                                             </div>
                                             <div class="comment-body">
-                                            <span class="comment-user">
-                                                <a href='#' rel='external nofollow' class='url'>designer</a>
-                                            </span>
-                                                <p>
-                                                    我们的官方店铺购买下载：<a href="#" target="_blank" rel="noopener nofollow">黑镜主题-淘宝店铺</a>
-                                                </p>
+                                                <span class="comment-user">{{ $comment->author }}</span>
+                                                <p>{{ $comment->content }}</p>
                                                 <div class="comment-meta">
                                                     <a href="#" class="comment-date">
-                                                        04-09-2018
+                                                        {{ $comment->created_at }}
                                                     </a>
-                                                    <span class="comment-action">
-                                                        <a rel='nofollow' class='comment-reply-link' href='#' aria-label='回复给designer'>
-                                                            回复
-                                                        </a>
-                                                    </span>
+                                                    {{--<span class="comment-action">--}}
+                                                        {{--<a rel='nofollow' class='comment-reply-link' href='#' aria-label='回复给2333'>--}}
+                                                            {{--回复--}}
+                                                        {{--</a>--}}
+                                                    {{--</span>--}}
                                                 </div>
                                             </div>
                                         </div>
+                                        {{--<ul class="children">--}}
+                                            {{--<li class="comment byuser comment-author-designer bypostauthor odd alt depth-2"--}}
+                                                {{--id="li-comment-115">--}}
+                                                {{--<div id="comment-115">--}}
+                                                    {{--<div class="comment-avatar">--}}
+                                                        {{--<img alt='' src='/static/picture/avatar_user_1_1500356034-48x48.png' class='avatar avatar-48 photo' height='48' width='48'/>--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="comment-body">--}}
+                                                    {{--<span class="comment-user">--}}
+                                                        {{--<a href='#' rel='external nofollow' class='url'>designer</a>--}}
+                                                    {{--</span>--}}
+                                                        {{--<p>--}}
+                                                            {{--我们的官方店铺购买下载：<a href="#" target="_blank" rel="noopener nofollow">黑镜主题-淘宝店铺</a>--}}
+                                                        {{--</p>--}}
+                                                        {{--<div class="comment-meta">--}}
+                                                            {{--<a href="#" class="comment-date">--}}
+                                                                {{--04-09-2018--}}
+                                                            {{--</a>--}}
+                                                            {{--<span class="comment-action">--}}
+                                                                {{--<a rel='nofollow' class='comment-reply-link' href='#' aria-label='回复给designer'>--}}
+                                                                    {{--回复--}}
+                                                                {{--</a>--}}
+                                                            {{--</span>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</li><!-- #comment-## -->--}}
+                                        {{--</ul><!-- .children -->--}}
                                     </li><!-- #comment-## -->
-                                </ul><!-- .children -->
-                            </li><!-- #comment-## -->
-                            <li class="comment even thread-odd thread-alt depth-1" id="li-comment-40">
-                                <div id="comment-40">
-                                    <div class="comment-avatar">
-                                        <img src="/static/picture/d923e338d93c4244a1adcd0b5783978a.gif" class="avatar avatar-96" height="96" width="96">
-                                    </div>
-                                    <div class="comment-body">
-                                        <span class="comment-user">
-                                            <a href='#' rel='external nofollow' class='url'>吾关心</a>
-                                        </span>
-                                        <p>确实很大气，但右侧的作者下面，太空了，应该显点信息</p>
-                                        <div class="comment-meta">
-                                            <a href="#" class="comment-date">
-                                                02-05-2018
-                                            </a>
-                                            <span class="comment-action">
-                                            <a  class='comment-reply-link' href='#' aria-label='回复给吾关心'>回复</a>                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="children">
-                                    <li class="comment byuser comment-author-designer bypostauthor odd alt depth-2" id="li-comment-42">
-                                        <div id="comment-42">
-                                            <div class="comment-avatar">
-                                                <img alt='' src='/static/picture/avatar_user_1_1500356034-48x48.png' class='avatar avatar-48 photo' height='48' width='48'/>
-                                            </div>
-                                            <div class="comment-body">
-                                            <span class="comment-user">
-                                                <a href='#' rel='external nofollow' class='url'>designer</a>
-                                            </span>
-                                                <p>右侧作者下面可以自己添加小工具：标签云、热度文章列表、微信公众号等等。如果你不想要侧边可以让文章全屏</p>
-                                                <div class="comment-meta">
-                                                    <a href="#" class="comment-date">
-                                                        02-06-2018
-                                                    </a>
-                                                    <span class="comment-action">
-                                                        <a rel='nofollow' class='comment-reply-link' href='#' aria-label='回复给designer'>
-                                                            回复
-                                                        </a>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                                @endforeach
+                            </ul>
+                       @endif
                     </div>
                 </div>
             </div>
@@ -477,5 +440,47 @@
                 $('#custom-toc-container').css("width", "");
             }
         });
+
+        $.fn.postLike = function ()
+        {
+            var id = $(this).data("id");
+            // var action = $(this).data('action');
+            var rateHolder = $(this).find(".count");
+            var ajaxData = {
+                article_id: id,
+                _token: "{{ csrf_token() }}"
+                // um_action: action
+            };
+            var ajaxContent = {
+                type: "POST",
+                url: "/articles/operate_commend",
+                data: ajaxData
+            };
+            var _this = $(this);
+            if ($(this).hasClass('done')) {
+                $(this).removeClass('done');
+                ajaxData.action = "subLike";
+                ajaxContent.success = function (data) {
+                    _this.find("i").removeClass("czs-thumbs-up").addClass("czs-thumbs-up-l");
+                    $(rateHolder).html(data);
+                };
+                $.ajax(ajaxContent);
+            } else {
+                $(this).addClass('done');
+                ajaxData.action = "addLike";
+                ajaxContent.success = function (data) {
+                    _this.find('i').removeClass("czs-thumbs-up-l").addClass("czs-thumbs-up");
+                    $(rateHolder).html(data);
+                };
+                $.ajax(ajaxContent);
+            }
+            return false;
+        }
+
+        // 点赞相关操作
+        $(document).on("click", ".favorite", function() {
+            $(this).postLike();
+        });
+
     </script>
 @endsection

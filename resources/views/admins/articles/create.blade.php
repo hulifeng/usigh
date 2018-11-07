@@ -45,7 +45,7 @@
                         <!-- Basic Form Inputs card start -->
                         <div class="card">
                             <div class="card-block">
-                                @if($article)
+                                @if($article->id)
                                     <form action="{{ route('admins.articles.update', array('article' => $article->id)) }}" method="post" enctype="multipart/form-data">
                                         {{ method_field('PUT') }}
                                 @else

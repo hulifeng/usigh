@@ -32,9 +32,9 @@
                 <li><a href="javascript:void(0)">面试加分项专练</a></li>
             </ul>
         </div>
-        <div class="col-sm-4 mason">
-            <div class="fl"></div>
-            <div class="fr">
+        <div class="col-sm-4 mason" id="usigh-info">
+            <div class="fl usigh-left"></div>
+            <div class="fr usigh-right">
                 <img src="/static/images/logo_1.png" alt="">
                 <p><strong>Learning</strong> is an as<strong>set!</strong></p>
                 <p style="width: 210px;"><strong>为程序小白而生</strong>，<strong>友叹</strong>本着最土的答案让程序小白轻松的<strong>解决难题！</strong></p>

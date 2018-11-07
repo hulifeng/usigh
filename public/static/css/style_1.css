@@ -5107,6 +5107,18 @@ main {
     }
 }
 
+@media screen and (max-width: 1010px) {
+    #usigh-info {
+        display: none
+    }
+}
+
+/*@media screen and (max-width: 1010px) {*/
+    /*#usigh-info .usigh-left {*/
+        /*display: none*/
+    /*}*/
+/*}*/
+
 .widget {
     background: #fff;
     margin-bottom: 30px;

@@ -3,7 +3,13 @@
 Route::get('/', 'IndexController@index')->name('index');
 
 // 文章详情页
-Route::get('/articles/{article}', 'ArticlesController@show')->name('articles.show');
+Route::get('/articles/{article}', 'ArticlesController@show')->where("article", "[\d]+")->name('articles.show');
+
+// 文章回复
+Route::post('/reply', 'CommentsController@store')->name('reply');
+
+// 用户点赞
+Route::post('/articles/operate_commend', 'ArticlesController@like')->name('operate_commend');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function ($router) {
     // 后台首页

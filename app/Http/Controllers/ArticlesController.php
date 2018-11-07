@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\UserLike;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -18,6 +19,37 @@ class ArticlesController extends Controller
 
         $next_article = Article::where('id', '>', $article->id)->orderBy('id', 'asc')->first();
 
-        return view('articles.show', compact('article', 'categories', 'linkArticles', 'prev_article', 'next_article'));
+        $comments = $article->comments;
+
+        return view('articles.show', compact('article', 'categories', 'linkArticles', 'prev_article', 'next_article', 'comments'));
+    }
+
+    // 点赞
+    public function like(Request $request)
+    {
+        $ip = get_real_ip();
+
+        $action = $request->input('action');
+
+        $data = [
+            'ip' => $ip,
+            'article_id' => $request->input('article_id')
+        ];
+
+        switch ($action) {
+            case 'addLike':
+                UserLike::firstOrCreate($data);
+                break;
+            case 'subLike':
+                $user_like = UserLike::where($data)->first();
+                $user_like->delete();
+                break;
+        }
+
+        $new_num = article_of_num($request->input('article_id'));
+
+        return [
+            "<span class='count d-block'>{$new_num}</span>"
+        ];
     }
 }

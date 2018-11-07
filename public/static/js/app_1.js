@@ -336,42 +336,42 @@ $(window).scroll(function() {
  *
  * @returns {boolean}
  */
-$.fn.postLike = function() {
-    var id = $(this).data("id");
-    var action = $(this).data('action');
-    var rateHolder = $(this).find(".count");
-    var ajaxData = {
-        um_id: id,
-        um_action: action
-    };
-    var ajaxContent = {
-        type: "POST",
-        url: siteUrl+"/wp-admin/admin-ajax.php",
-        data: ajaxData
-    };
-    var _this = $(this);
-    if ($(this).hasClass('done')) {
-        $(this).removeClass('done');
-        ajaxData.action = "subLike";
-        ajaxContent.success = function (data) {
-            _this.find("i").removeClass("czs-thumbs-up").addClass("czs-thumbs-up-l");
-            $(rateHolder).html(data);
-        };
-        $.ajax(ajaxContent);
-    } else {
-        $(this).addClass('done');
-        ajaxData.action = "addLike";
-        ajaxContent.success = function (data) {
-            _this.find('i').removeClass("czs-thumbs-up-l").addClass("czs-thumbs-up");
-            $(rateHolder).html(data);
-        };
-        $.ajax(ajaxContent);
-    }
-    return false;
-};
-$(document).on("click", ".favorite", function() {
-        $(this).postLike();
-});
+// $.fn.postLike = function() {
+//     var id = $(this).data("id");
+//     var action = $(this).data('action');
+//     var rateHolder = $(this).find(".count");
+//     var ajaxData = {
+//         um_id: id,
+//         um_action: action
+//     };
+//     var ajaxContent = {
+//         type: "POST",
+//         url: siteUrl+"/wp-admin/admin-ajax.php",
+//         data: ajaxData
+//     };
+//     var _this = $(this);
+//     if ($(this).hasClass('done')) {
+//         $(this).removeClass('done');
+//         ajaxData.action = "subLike";
+//         ajaxContent.success = function (data) {
+//             _this.find("i").removeClass("czs-thumbs-up").addClass("czs-thumbs-up-l");
+//             $(rateHolder).html(data);
+//         };
+//         $.ajax(ajaxContent);
+//     } else {
+//         $(this).addClass('done');
+//         ajaxData.action = "addLike";
+//         ajaxContent.success = function (data) {
+//             _this.find('i').removeClass("czs-thumbs-up-l").addClass("czs-thumbs-up");
+//             $(rateHolder).html(data);
+//         };
+//         $.ajax(ajaxContent);
+//     }
+//     return false;
+// };
+// $(document).on("click", ".favorite", function() {
+//         $(this).postLike();
+// });
 
 
 
